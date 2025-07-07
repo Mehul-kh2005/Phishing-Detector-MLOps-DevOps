@@ -35,7 +35,7 @@ class NetworkDataExtract:
     def insert_data_mongodb(self, records, collection, database):
         try:
             logging.info(f"Connecting to MongoDB database: {database}, collection: {collection}")
-            client = pymongo.MongoClient(MONGO_DB_URL)
+            client = pymongo.MongoClient(MONGO_DB_URL, tlsCAFile=ca)
             db = client[database]
             coll = db[collection]
 
