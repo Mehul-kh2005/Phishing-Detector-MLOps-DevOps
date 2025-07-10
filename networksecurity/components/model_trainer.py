@@ -39,7 +39,9 @@ class ModelTrainer:
             f1_score=classification_metric.f1_score
             precision_score=classification_metric.precision_score
             recall_score=classification_metric.recall_score
+            accuracy_score=classification_metric.accuracy_score
 
+            mlflow.log_metric("accuracy_score",accuracy_score)
             mlflow.log_metric("f1_score",f1_score)
             mlflow.log_metric("precision_score",precision_score)
             mlflow.log_metric("recall_score",recall_score)
@@ -95,7 +97,7 @@ class ModelTrainer:
             param=params
         )
 
-        logging.info(f"Best Model Selected: {best_model_name} with test score: {model_report[best_model_name]}")
+        logging.info(f"Best Model Selected: {best_model_name} with test metrics: {model_report[best_model_name]}")
 
         y_train_pred=best_model.predict(X_train)
         classification_train_metric=get_classification_score(y_true=y_train,y_pred=y_train_pred)
@@ -115,6 +117,8 @@ class ModelTrainer:
 
         Network_Model=NetworkModel(preprocessor=preprocessor,model=best_model)
         save_object(self.model_trainer_config.trained_model_file_path,obj=Network_Model)
+
+        save_object('final_model/model.pkl',best_model)
 
         # Model Trainer Artifact
         model_trainer_artifact=ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path,

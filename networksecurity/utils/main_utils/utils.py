@@ -6,7 +6,7 @@ import sys
 import numpy as np
 import pickle
 
-from sklearn.metrics import r2_score
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 from sklearn.model_selection import GridSearchCV
 
 def read_yaml_file(file_path:str)->dict:
@@ -83,21 +83,27 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, param):
         best_model_name = None
 
         for model_name, model in models.items():
-            para = param[model_name]
-
-            gs = GridSearchCV(model, para, cv=3)
+            para = param.get(model_name, {})
+            gs = GridSearchCV(model, para, cv=3, scoring='accuracy') 
             gs.fit(X_train, y_train)
 
-            y_train_pred = gs.predict(X_train)
             y_test_pred = gs.predict(X_test)
 
-            train_model_score = r2_score(y_train, y_train_pred)
-            test_model_score = r2_score(y_test, y_test_pred)
+            # Classification metrics
+            acc = accuracy_score(y_test, y_test_pred)
+            f1 = f1_score(y_test, y_test_pred)
+            precision = precision_score(y_test, y_test_pred)
+            recall = recall_score(y_test, y_test_pred)
 
-            report[model_name] = test_model_score
+            report[model_name] = {
+                'accuracy': acc,
+                'f1_score': f1,
+                'precision': precision,
+                'recall': recall
+            }
 
-            if test_model_score > best_score:
-                best_score = test_model_score
+            if f1 > best_score:
+                best_score = f1
                 best_model = gs.best_estimator_
                 best_model_name = model_name
 
