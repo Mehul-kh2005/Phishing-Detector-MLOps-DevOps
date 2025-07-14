@@ -22,6 +22,10 @@ from sklearn.ensemble import (
     RandomForestClassifier,
 )
 import mlflow
+
+import dagshub
+dagshub.init(repo_owner='Mehul-kh2005', repo_name='Phishing-Detector-MLOps-DevOps', mlflow=True)
+
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -45,7 +49,6 @@ class ModelTrainer:
             mlflow.log_metric("f1_score",f1_score)
             mlflow.log_metric("precision_score",precision_score)
             mlflow.log_metric("recall_score",recall_score)
-            mlflow.sklearn.log_model(best_model,"model")
         
     def train_model(self,X_train,y_train,X_test,y_test)->ModelTrainerArtifact:
 

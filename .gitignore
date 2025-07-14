@@ -1,1 +1,62 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+*.egg-info/
+
+# Jupyter/IPython checkpoints
+.ipynb_checkpoints
+
+# Environments
 .env
+.venv/
+env/
+venv/
+ENV/
+
+# Logs and output
+logs/
+*.log
+*.out
+
+# Model artifacts and pipeline outputs
+Artifacts/
+
+# Training files and cache
+*.parquet
+*.joblib
+*.npz
+
+# VSCode and editor settings
+.vscode/
+.idea/
+
+# Docker
+*.container
+*.dockerfile
+docker-compose.yml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# FastAPI template cache
+*.html.__fastapi_cache__/
+
+# Testing and coverage
+.coverage
+htmlcov/
+*.pytest_cache/
+.pytest_cache/
+
+# GitHub Actions secrets cache
+.github/token_cache/
+
+# Uploads
+uploads/
+media/
+
+# Ignore uploaded files for predictions
+*.upload.*
+*.bak

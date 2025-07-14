@@ -30,7 +30,7 @@ def get_requirements()->List[str]:
     return requirements_lst
 
 setup(
-    name="Network-Security",
+    name="Phishing-Detector-MLOps-DevOps",
     version='0.0.1',
     author='Mehul Khandelwal',
     author_email='mehul.kh2005@gmail.com',
