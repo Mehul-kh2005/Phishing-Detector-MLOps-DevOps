@@ -321,4 +321,4 @@ dagshub.init(
 
 ### Mehul Khandelwal - 🔗 [GitHub](https://github.com/Mehul-kh2005/Phishing-Detector-MLOps-DevOps) | [LinkedIn](https://www.linkedin.com/in/mehulkhandelwal2005/)
 
-📝 *This project was developed as part of a machine learning and MLOps exercise focused on classification modeling for detecting phishing websites. It integrates a complete ETL pipeline, model training, FastAPI-based web app, and CI/CD deployment to AWS, providing a real-world implementation of modern data science workflows.*
+📝 *This project was developed as part of a machine learning, MLOps, and DevOps exercise focused on classification modeling for detecting phishing websites. It integrates a complete ETL pipeline, model training, a FastAPI-based web application, containerization with Docker, and CI/CD deployment to AWS using GitHub Actions — delivering a real-world, production-ready implementation of modern data science and DevOps workflows.*
